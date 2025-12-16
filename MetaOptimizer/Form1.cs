@@ -11,8 +11,8 @@ namespace MetaOptimizer
 {
     public partial class Form1 : Form
     {
-        private Color defaultColor = Color.FromArgb(255, 255, 255);
-        private Color optimizedColor = Color.FromArgb(100, 100, 255);
+        private Color defaultColor = Color.FromArgb(0, 0, 0);
+        private Color optimizedColor = Color.FromArgb(70, 70, 180);
         private Color processingColor = Color.FromArgb(150, 150, 150);
 
         private bool isProcessing = false;
@@ -49,7 +49,7 @@ namespace MetaOptimizer
                 return;
             }
 
-            DialogResult ret1 = MessageBox.Show("このツールは必ず説明書を読んでから使用してください。\nこのツールの説明書は読みましたか？\n\n(「いいえ」を押すと説明書のページが開かれます。)", "MetaOptimizer Alpha", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult ret1 = MessageBox.Show("このツールは必ず説明書を読んでから使用してください。\nこのツールの説明書は読みましたか？\n\n(「いいえ」を押すと説明書のページが開かれます。)", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (ret1 == DialogResult.Cancel)
             {
@@ -60,7 +60,7 @@ namespace MetaOptimizer
                 });
                 
 
-                DialogResult ret2 = MessageBox.Show("注意: このソフトウェアはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", "MetaOptimizer Alpha", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult ret2 = MessageBox.Show("注意: このツールはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
                 if (ret2 == DialogResult.OK)
                 {
@@ -80,7 +80,7 @@ namespace MetaOptimizer
         {
             if (isProcessing)
             {
-                MessageBox.Show("現在処理中です。", "Processing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("現在処理中です。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -107,7 +107,7 @@ namespace MetaOptimizer
         {
             if (isProcessing)
             {
-                MessageBox.Show("現在処理中です。", "Processing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("現在処理中です。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -131,7 +131,7 @@ namespace MetaOptimizer
 
         private async Task Run_Change(int value)
         {
-            DialogResult res = MessageBox.Show("万が一の問題を避けるため、Link接続などを一時的に切断することをお勧めします。\nまた、再使用時は「Meta Horizon Link」を起動することをお勧めします。\n\n実行しますか？", "Optimize Start", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show("万が一の問題を避けるため、Link接続などを一時的に切断することをお勧めします。\nまた、再使用時は「Meta Horizon Link」を起動することをお勧めします。\n\n実行しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (res == DialogResult.Cancel)
             {
@@ -193,7 +193,7 @@ namespace MetaOptimizer
             }
             else
             {
-                MessageBox.Show($"Meta Appが正常にインストールされているかご確認ください。", "Optimize Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Meta Appが正常にインストールされているかご確認ください。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
 
@@ -256,7 +256,7 @@ namespace MetaOptimizer
             }
             else
             {
-                MessageBox.Show($"このソフトウェアはWindowsのみで動作します。\n現在のプラットフォーム: {platform.ToString()}", "Unsupported Platform", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"このソフトウェアはWindowsのみで動作します。\n現在のプラットフォーム: {platform.ToString()}", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
         }
@@ -301,7 +301,7 @@ namespace MetaOptimizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Restart Service) \n{ex.Message}", "Optimize Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Restart Service) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -325,7 +325,7 @@ namespace MetaOptimizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Get Registry) \n{ex.Message}", "Optimize Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Get Registry) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             return -1;
@@ -347,7 +347,7 @@ namespace MetaOptimizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Set Registry) \n{ex.Message}", "Optimize Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Set Registry) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -357,7 +357,7 @@ namespace MetaOptimizer
             // 処理中の場合、警告文を表記
             if (isProcessing)
             {
-                DialogResult res = MessageBox.Show("現在最適化処理中です。本当に終了しますか？", "Processing", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("現在最適化処理中です。本当に終了しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (res == DialogResult.Cancel)
                 {
                     e.Cancel = true;

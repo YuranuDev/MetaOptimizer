@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.servicemode = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,27 +39,17 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.versionText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 34);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "MetaOptimizer    ";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusText,
             this.servicemode});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 138);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 146);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(339, 22);
@@ -91,8 +80,8 @@
             // 
             this.state_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.state_Label.Font = new System.Drawing.Font("Yu Gothic UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.state_Label.ForeColor = System.Drawing.Color.White;
-            this.state_Label.Location = new System.Drawing.Point(29, 57);
+            this.state_Label.ForeColor = System.Drawing.Color.Black;
+            this.state_Label.Location = new System.Drawing.Point(29, 65);
             this.state_Label.Name = "state_Label";
             this.state_Label.Size = new System.Drawing.Size(278, 48);
             this.state_Label.TabIndex = 4;
@@ -102,7 +91,7 @@
             // default_Button
             // 
             this.default_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.default_Button.Location = new System.Drawing.Point(74, 105);
+            this.default_Button.Location = new System.Drawing.Point(74, 113);
             this.default_Button.Name = "default_Button";
             this.default_Button.Size = new System.Drawing.Size(93, 23);
             this.default_Button.TabIndex = 0;
@@ -114,7 +103,7 @@
             // 
             this.steamvr_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.steamvr_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.steamvr_Button.Location = new System.Drawing.Point(173, 105);
+            this.steamvr_Button.Location = new System.Drawing.Point(173, 113);
             this.steamvr_Button.Name = "steamvr_Button";
             this.steamvr_Button.Size = new System.Drawing.Size(98, 23);
             this.steamvr_Button.TabIndex = 1;
@@ -132,9 +121,9 @@
             // 
             this.versionText.AutoSize = true;
             this.versionText.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.versionText.ForeColor = System.Drawing.Color.White;
+            this.versionText.ForeColor = System.Drawing.Color.Black;
             this.versionText.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.versionText.Location = new System.Drawing.Point(240, 21);
+            this.versionText.Location = new System.Drawing.Point(260, 47);
             this.versionText.Name = "versionText";
             this.versionText.Size = new System.Drawing.Size(44, 13);
             this.versionText.TabIndex = 6;
@@ -145,27 +134,37 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label1.Location = new System.Drawing.Point(136, 51);
+            this.label1.Location = new System.Drawing.Point(136, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "現在のモード";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, -6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(315, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(339, 160);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(339, 168);
             this.Controls.Add(this.versionText);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.state_Label);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.steamvr_Button);
             this.Controls.Add(this.default_Button);
             this.ForeColor = System.Drawing.Color.Black;
@@ -178,13 +177,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.ToolStripStatusLabel servicemode;
@@ -194,6 +193,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label versionText;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
