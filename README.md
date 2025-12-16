@@ -1,8 +1,8 @@
 <img width="480" height="240" alt="banner" src="https://github.com/user-attachments/assets/e144d8e4-822e-4fb5-bf9c-a6e7b88469a1" />
 
-Quest Link 使用時のダッシュボード（OculusDash）を無効化することで、  
+Quest Link 使用時のメニュー（OculusDash）を無効化することで、  
 主に有線接続中の Meta / Oculus ヘッドセットにおいて  
-SteamVR 使用時の CPU・GPU 使用率の軽減を目的としたツールです。<br><br>
+SteamVR 使用時の CPU・メモリ・GPU 使用率の軽減を目的としたツールです。<br><br>
 
 以下の説明を十分にお読みのうえ、ご利用ください。
 
