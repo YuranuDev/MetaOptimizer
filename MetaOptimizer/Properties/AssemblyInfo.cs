@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
 [assembly: AssemblyTitle("MetaOptimizer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("a simple optimizer for Meta/Oculus headset.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MetaOptimizer")]
-[assembly: AssemblyCopyright("Copyright ©  2025")]
+[assembly: AssemblyCopyright("Copyright © 2025 YuranuDev")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

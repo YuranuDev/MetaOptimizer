@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -11,9 +12,32 @@ namespace MetaOptimizer
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
+        /// 
+
+        private static System.Threading.Mutex mutex;
+
         [STAThread]
         static void Main()
         {
+
+            // すでに起動中のアプリがないか確認
+            bool mutexchk;
+            bool canhandle = false;
+
+            mutex = new System.Threading.Mutex(false, "MetaOptimizer_Checking_Mutex", out mutexchk);
+
+            if (mutexchk)
+            {
+                canhandle = mutex.WaitOne(0, false);
+            }
+
+            if (!canhandle)
+            {
+                // すでに起動中の場合はメッセージを表示して終了
+                MessageBox.Show("MetaOptimizerはすでに起動しています。", "多重起動エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // 管理者権限チェック
             if (!IsRunAsAdmin())
             {
@@ -34,6 +58,7 @@ namespace MetaOptimizer
                 return;
             }
 
+            // アプリケーションの起動
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
