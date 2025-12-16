@@ -24,7 +24,7 @@ namespace MetaOptimizer
         public Form1()
         {
             InitializeComponent();
-
+            
             console = new ConsoleFormat();
             console.SetLevel(ConsoleFormat.LogLevel.DEBUG);
         }
@@ -49,7 +49,7 @@ namespace MetaOptimizer
                 return;
             }
 
-            DialogResult ret1 = MessageBox.Show("このツールは必ず説明書を読んでから使用してください。\nこのツールの説明書は読みましたか？\n\n(「いいえ」を押すと説明書のページが開かれます。)", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult ret1 = MessageBox.Show("このツールは必ず説明書を読んでから使用してください。\nこのツールの説明書は読みましたか？\n\n(「いいえ」を押すと説明書のページが開かれます。)", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (ret1 == DialogResult.Cancel)
             {
@@ -60,7 +60,7 @@ namespace MetaOptimizer
                 });
             }
 
-            DialogResult ret2 = MessageBox.Show("注意: このツールはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult ret2 = MessageBox.Show("注意: このツールはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (ret2 == DialogResult.OK)
             {
@@ -79,7 +79,7 @@ namespace MetaOptimizer
         {
             if (isProcessing)
             {
-                MessageBox.Show("現在処理中です。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("現在処理中です。", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -106,7 +106,7 @@ namespace MetaOptimizer
         {
             if (isProcessing)
             {
-                MessageBox.Show("現在処理中です。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("現在処理中です。", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -130,7 +130,7 @@ namespace MetaOptimizer
 
         private async Task Run_Change(int value)
         {
-            DialogResult res = MessageBox.Show("万が一の問題を避けるため、Link接続などを一時的に切断することをお勧めします。\nまた、再使用時は「Meta Horizon Link」を起動することをお勧めします。\n\n実行しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show("万が一の問題を避けるため、Link接続などを一時的に切断することをお勧めします。\nまた、再使用時は「Meta Horizon Link」を起動することをお勧めします。\n\n実行しますか？", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (res == DialogResult.Cancel)
             {
@@ -192,7 +192,7 @@ namespace MetaOptimizer
             }
             else
             {
-                MessageBox.Show($"Meta Appが正常にインストールされているかご確認ください。", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Meta Appが正常にインストールされているかご確認ください。", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
 
@@ -206,40 +206,49 @@ namespace MetaOptimizer
 
         private void UpdateServiceStatus()
         {
-            using (var sc = new ServiceController(Settings.Default.ServiceName))
+            try
             {
-                statusStrip1.Invoke(new Action(() =>
+                using (var sc = new ServiceController(Settings.Default.ServiceName))
                 {
-                    // 起動時
-                    if (sc.Status == ServiceControllerStatus.Running)
+                    statusStrip1.Invoke(new Action(() =>
                     {
-                        servicemode.ForeColor = Color.DarkGreen;
-                        servicemode.Text = $"OVRサービス: 実行中";
-                    }
-                    // 停止時
-                    else if (sc.Status == ServiceControllerStatus.Stopped)
-                    {
-                        servicemode.ForeColor = Color.DarkRed;
-                        servicemode.Text = $"OVRサービス: 停止中";
-                    }
-                    // 起動待機中
-                    else if (sc.Status == ServiceControllerStatus.StartPending)
-                    {
-                        servicemode.ForeColor = Color.Orange;
-                        servicemode.Text = $"OVRサービス: 起動処理中";
-                    }
-                    // 停止待機中
-                    else if (sc.Status == ServiceControllerStatus.StopPending)
-                    {
-                        servicemode.ForeColor = Color.Orange;
-                        servicemode.Text = $"OVRサービス: 停止処理中";
-                    }
-                    else
-                    {
-                        servicemode.ForeColor = Color.Yellow;
-                        servicemode.Text = $"サービス: {sc.Status.ToString()}";
-                    }
-                }));
+                        // 起動時
+                        if (sc.Status == ServiceControllerStatus.Running)
+                        {
+                            servicemode.ForeColor = Color.DarkGreen;
+                            servicemode.Text = $"OVRサービス: 実行中";
+                        }
+                        // 停止時
+                        else if (sc.Status == ServiceControllerStatus.Stopped)
+                        {
+                            servicemode.ForeColor = Color.DarkRed;
+                            servicemode.Text = $"OVRサービス: 停止中";
+                        }
+                        // 起動待機中
+                        else if (sc.Status == ServiceControllerStatus.StartPending)
+                        {
+                            servicemode.ForeColor = Color.Orange;
+                            servicemode.Text = $"OVRサービス: 起動処理中";
+                        }
+                        // 停止待機中
+                        else if (sc.Status == ServiceControllerStatus.StopPending)
+                        {
+                            servicemode.ForeColor = Color.Orange;
+                            servicemode.Text = $"OVRサービス: 停止処理中";
+                        }
+                        else
+                        {
+                            servicemode.ForeColor = Color.Yellow;
+                            servicemode.Text = $"サービス: {sc.Status.ToString()}";
+                        }
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                timer1.Stop();
+                MessageBox.Show($"エラー: \n{ex.Message}", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
@@ -255,7 +264,7 @@ namespace MetaOptimizer
             }
             else
             {
-                MessageBox.Show($"このソフトウェアはWindowsのみで動作します。\n現在のプラットフォーム: {platform.ToString()}", Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"このソフトウェアはWindowsのみで動作します。\n現在のプラットフォーム: {platform.ToString()}", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
         }
@@ -270,13 +279,13 @@ namespace MetaOptimizer
                     // まずOculusを停止
                     if (sc.Status == ServiceControllerStatus.Running)
                     {
-                        console.Debug($"{serviceName} Stopping...", nameof(Name));
+                        console.Debug($"{serviceName} Stopping...", nameof(this.Text));
                         sc.Stop();
-                        console.Debug($"Stopped!", nameof(Name));
+                        console.Debug($"Stopped!", nameof(this.Text));
                     }
                     else if (sc.Status == ServiceControllerStatus.Stopped)
                     {
-                        console.Debug($"{serviceName} already Stopped!", nameof(Name));
+                        console.Debug($"{serviceName} already Stopped!", nameof(this.Text));
                     }
                 }
 
@@ -287,20 +296,20 @@ namespace MetaOptimizer
                     // 次にOculusを起動
                     if (sc.Status == ServiceControllerStatus.Stopped)
                     {
-                        console.Debug($"{serviceName} Starting...", nameof(Name));
+                        console.Debug($"{serviceName} Starting...", nameof(this.Text));
                         sc.Start();
-                        console.Debug("Started!", nameof(Name));
+                        console.Debug("Started!", nameof(this.Text));
                     }
                     else if (sc.Status == ServiceControllerStatus.Running)
                     {
-                        console.Debug($"{serviceName} already Started!", nameof(Name));
+                        console.Debug($"{serviceName} already Started!", nameof(this.Text));
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Restart Service) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Restart Service) \n{ex.Message}", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -324,7 +333,7 @@ namespace MetaOptimizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Get Registry) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Get Registry) \n{ex.Message}", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             return -1;
@@ -346,7 +355,7 @@ namespace MetaOptimizer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Optimize Failed! (Set Registry) \n{ex.Message}", Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Optimize Failed! (Set Registry) \n{ex.Message}", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -356,7 +365,7 @@ namespace MetaOptimizer
             // 処理中の場合、警告文を表記
             if (isProcessing)
             {
-                DialogResult res = MessageBox.Show("現在最適化処理中です。本当に終了しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("現在最適化処理中です。本当に終了しますか？", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (res == DialogResult.Cancel)
                 {
                     e.Cancel = true;
