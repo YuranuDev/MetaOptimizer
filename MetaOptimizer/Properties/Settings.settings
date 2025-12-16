@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MetaOptimizer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RegistryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SOFTWARE\WOW6432Node\Oculus VR, LLC\Oculus\Config</Value>
+    </Setting>
+    <Setting Name="AgreeToUse" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ServiceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OVRService</Value>
+    </Setting>
+    <Setting Name="KeyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PreventDashLaunch</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
