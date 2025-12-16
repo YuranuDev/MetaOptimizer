@@ -58,20 +58,19 @@ namespace MetaOptimizer
                     FileName = "https://github.com/YuranuDev/MetaOptimizer",
                     UseShellExecute = true
                 });
-                
+            }
 
-                DialogResult ret2 = MessageBox.Show("注意: このツールはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult ret2 = MessageBox.Show("注意: このツールはレジストリ操作を行います。\nほとんどの場合、システムには何も影響は与えませんが、不安な方はこのソフトウェアを使用しないでください。\n\n本当にこのソフトウェアを使用しますか？", Name, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
-                if (ret2 == DialogResult.OK)
-                {
-                    Settings.Default.AgreeToUse = true;
-                    Settings.Default.Save();
-                    return;
-                }
-                else
-                {
-                    Application.Exit();
-                }
+            if (ret2 == DialogResult.OK)
+            {
+                Settings.Default.AgreeToUse = true;
+                Settings.Default.Save();
+                return;
+            }
+            else
+            {
+                Application.Exit();
             }
         }
 
